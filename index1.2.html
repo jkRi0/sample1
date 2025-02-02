@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Travel and Tour</title>
+        <style>
+            /*OTHER SCREEN SIZE*/
+            @media(max-width:1920px){
+                .header{
+                    height: 80px;
+                }
+                .logo, .profile{
+                    width: 60px;
+                }
+                .account, .profile{
+                    height: 60px;
+                }
+                .landingPage{
+                   padding-top: 80px;
+                } 
+            }
+            @media(max-width:1366px){
+                .header{
+                    height: 60px;
+                }
+                .logo, .profile{
+                    width: 40px;
+                }
+                .account, .profile{
+                    height: 40px;
+                }
+                .landingPage{
+                   padding-top: 60px;
+                } 
+            }
+
+            /*FOR MOBILE*/
+            @media(max-width:850px){
+                
+            }
+
+            @media(max-width:550px){
+                
+            }
+            body{
+                margin: 0;
+                min-width: 1366px;
+            }
+            .mainContainer{
+                background-color: rgb(89, 89, 89);
+                display: flex;
+                width: 100%;
+                height: 100vh;
+            }
+            .header{
+                background-color: rgba(0, 0, 255, 0);
+                display: flex;
+                padding-left: 20px;
+                padding-right: 20px;
+                position: absolute;
+                justify-content: space-between;
+                align-items: center;
+                right: 0;
+                left: 0;
+                z-index: 500;
+                min-width: 1366px;
+            }
+            .logo, .profile{
+                background-color: rgba(85, 85, 85, 0.667);
+                display: flex;
+                border-radius: 30px;
+                border: 1px solid black;
+                justify-content: center;
+                align-items: center;
+            }
+            .profile{
+                display:none;
+            }
+            .navBar{
+                display: flex;
+                background-color: rgba(0, 255, 255, 0);
+                padding-left: 30px;
+                padding-right: 30px;
+                height: 50px;
+                border-radius: 30px;
+                box-shadow: 0 0 5px black;
+            }
+            .navBar button{
+                height: 100%;
+                margin-left: 0;
+                margin-right: 0;
+                border: none;
+                padding-left: 15px;
+                padding-right: 15px;
+                background-color: rgba(0, 136, 255, 0);
+                font-weight: 700;
+                color: rgb(0, 0, 0);
+                transition: background-color 0.2s;
+                cursor: pointer;
+            }
+            .navBar button:hover, .account button:hover{
+                background-color: rgba(199, 199, 199, 0.394);
+            }
+            .account{
+                background-color: rgba(255, 146, 146, 0);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .account button{
+                cursor: pointer;
+                border: none;
+                margin-left: 20px;
+                margin-right: 20px;
+                border-radius: 10px;
+                padding-left: 20px;
+                padding-right: 20px;
+                height: 40px;
+                background-color: rgb(209, 233, 255);
+            }
+            .landingPage{
+                background-color: rgba(194, 163, 123, 0);
+                display: flex;
+                width: 100%;
+                position: absolute;
+                right: 0;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                justify-content: space-between;
+                box-shadow: inset 0 0 20px black;
+                padding-bottom: 60px;
+                min-width: 1366px;
+                z-index: 50;
+            }
+            .landingPageBG{
+                z-index: 50;
+            }
+            .landingPageBG2{
+                z-index:49;
+            }
+            .leftSide{
+                display: flex;
+                width: 100%;
+                height: auto;
+                justify-content: right;
+                padding-top: 50px;
+                padding-right: 170px;
+            }
+            .columnImages{
+                background-color: rgba(240, 248, 255, 0);
+                display: flex;
+                min-width: 200px;
+                width: 35%;
+                height: 100%;
+                padding-left: 30px;
+                padding-right: 30px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .columnImages img{
+                display: flex;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                border-radius: 10px;
+                cursor: pointer;
+                /*box-shadow: 0 0 10px black;
+                transition: box-shadow 0.2s;*/
+            }/*
+            .columnImages img:hover{
+                box-shadow: 0 0 20px 3px black;
+            }*/
+            .rightSide{
+                background-color: rgba(127, 255, 212, 0);
+                display: flex;
+                width: 100%;
+                height: auto;
+                align-items: start;
+                padding-top: 50px;
+                padding-left: 170px;
+                flex-direction: column;
+            }
+            .rightSide button{
+                width: 9vw;
+                height: 8vh;
+                border: none;
+                border-radius: 20px;
+                font-size: 2vh;
+                margin-top: 20px;
+                background-color: orange;
+                box-shadow: 8px 5px 10px gray;
+                cursor: pointer;
+            }
+            .rightSide button:hover{
+                background-color: rgb(220, 143, 0);
+            }
+            .title{
+                display: flex;
+                width: 100%;
+                flex-direction: column;
+                background-color: rgba(255, 0, 0, 0);
+            }
+            .title .titlePart{
+                font-size: 10vh;
+                margin-top: 0;
+                margin-bottom: 0;
+                font-weight: 900;
+                color: rgb(73, 77, 81);
+                text-align: left;
+            }
+            .title .description{
+                font-size: 3.5vh;
+                margin-top: 25px;
+                text-align: left;
+            }
+            .rightBottom{
+                height: 100%;
+                display: flex;
+                justify-content: right;
+                align-items:last baseline;
+            }
+            .contactLogo{
+                display: flex;
+                justify-content: right;
+                align-items:last baseline;
+                background-color: rgba(240, 248, 255, 0.29);
+                backdrop-filter: blur(5px);
+                flex-direction: column;
+                width: 500px;
+                align-items: center;
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 20px;
+            }
+            .contactLogo img{
+                width: 50px;
+                height: 50px;
+                margin-left: 20px;
+                margin-right: 20px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                cursor: pointer;
+            }
+            .contactLogo img:hover{
+                background-color: rgba(82, 82, 82, 0.507);
+            }
+            .aboutPage,.contactPage,.explorePage,.transactionPage,.registerPage,.loginPage{
+                background: linear-gradient(to bottom, hsl(195, 67%, 40%) 0%, hsl(93, 100%, 90%) 80%);
+                display: none;
+                width: 100%;
+                position: absolute;
+                right: 0;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                box-shadow: inset 0 0 20px black;
+                padding-bottom: 60px;
+                min-width: 1366px;
+                justify-content: center;
+                align-items: center;
+                z-index: 49;
+                padding-top: 300px;
+            }
+            .aboutInformations{
+                display: flex;
+                background-color: rgba(255, 0, 0, 0);
+                width: 50%;
+                height: auto;
+                border-radius: 20px;
+                align-items: center;
+            }
+            /*FOR Z-INDEX TESTING, don't remove*/
+            .aboutPage{
+               
+            }
+            .contactPage{
+                
+            }
+            .explorePage{
+                
+            }
+            .transactionPage{
+                
+            }
+            .registerPage{
+                
+            }
+            .loginPage{
+
+            }
+            /*-------------------------*/
+            .fieldPanel{
+                display: flex;
+                background-color: rgba(255, 0, 0, 0);
+                width: 500px;
+                height: 600px;
+                flex-direction: column;
+                padding: 10px;
+            }
+            .fieldPanel input{
+                margin-top: 5px;
+                margin-bottom: 5px;
+                height: 20px;
+            }
+            .registerPanel,.loginPanel{
+                display: flex;
+                background-color: rgb(86, 60, 255);
+                flex-direction: column;
+                width: 500px;
+                height: 500px;
+                justify-content: center;
+                align-items: center;
+                color: white;
+                border-radius: 20px;
+            }
+            .registerPanel input,.loginPanel input{
+                width: 350px;
+                margin-top: 10px;
+                margin-bottom: 10px;
+                height: 30px;
+            }   
+            .registerPanel button,.loginPanel button{
+                height: 40px;
+                width: 95px;
+                margin: 10px;
+                border-radius: 10px;
+                cursor: pointer;
+            }
+            .destinationBoxes{
+                display: flex;
+                background-color: rgba(255, 0, 0, 0);
+                width: 100%;
+                height: 100%;
+                justify-content: center;
+            }
+            .destinationBox{
+                display: flex;
+                background-color: rgba(255, 235, 205, 0);
+                border: 1px solid black;
+                width: 300px;
+                margin-left: 10px;
+                margin-right: 10px;
+                cursor: pointer;
+                justify-content: center;
+                align-items: end;
+                border-radius: 10px;
+            }
+            .boxOverlay:hover{
+                box-shadow: inset 0 0 20px black;
+            }
+            .destinationImage{
+                display: flex;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 255, 255, 0);
+                border-radius: 10px;
+            }
+            .destinationImage img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                border-radius: 10px;
+            }
+            .boxOverlay{
+                position: absolute;
+                background-color: rgba(255, 0, 0, 0);
+                display: flex;
+                width: 300px;
+                height: 567px;
+                box-shadow: inset 0 0 10px black;
+                align-items: end;
+                transition: box-shadow 0.1s;
+            }
+            .blurBG{
+                background-color: rgba(255, 0, 0, 0);
+                height: 120px;
+                width: 100%;
+                backdrop-filter: blur(3px);
+                border-radius: 10px;
+                position: absolute;
+                font-size: 2vw;
+                font-weight: 900;
+                color: white;
+                align-content: center;
+                text-align: center;
+            }
+            .blurBG p{
+                text-shadow: 0 0 5px rgb(0, 0, 0);
+            }
+            .logo_container{
+                display: flex;
+                align-items: center;
+            }
+            .logo_container img{
+                display: flex;
+                height: 40px;
+                cursor: pointer;
+            }
+            .logo_container p{
+                margin-left: 10px;
+                font-size: 25px;
+                cursor: pointer;
+                backdrop-filter: blur(3px);
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="mainContainer">
+            <div class="landingPageBG2"></div>
+            <img src="https://scontent-mnl1-2.xx.fbcdn.net/v/t1.15752-9/436524911_3854010891487089_184051465823784494_n.jpg?stp=dst-jpg_s2048x2048&_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEmbY7yV8UTfRt-SS-6q99zYDGEmBvMm01gMYSYG8ybTeOjDfVzXIqSUSERfpyw4iJamZe0UckYTnUNGhYDDxXj&_nc_ohc=dVAcU5nJp2QQ7kNvgFcOXQC&_nc_ht=scontent-mnl1-2.xx&oh=03_Q7cD1QGHGAszQPYI4szSgvvHTtnzaO6mvChaDDJ0spZmtLkukQ&oe=668B816E"
+            style="width: 100%; 
+                    height: 100%; 
+                    object-fit: cover; 
+                    object-position: center; 
+                    "
+                class="landingPageBG" id="homePageBG">
+            <div class="header">
+                <div class="logo">
+                    <img src="https://z-p3-scontent.fmnl33-1.fna.fbcdn.net/v/t1.15752-9/438267272_1376176893061635_5340089979404018096_n.png?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeE6SVVDcuKBCb58cg9_eCAdLqHX07Tr-mouodfTtOv6al-jb3qEaKYtvYIp6N_sa_qpJobAMiR8Ulp4kKTtDAAc&_nc_ohc=-bPe1sbhSq8Q7kNvgEZtJyC&_nc_ht=z-p3-scontent.fmnl33-1.fna&oh=03_Q7cD1QE6rFk52lgtAVcKc2pmBgucZ5bGz8PXFpeCXIXBteZvBA&oe=66666A14"
+                    style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+
+                </div>
+                <div class="navBar">
+                    <button onclick="goHome()">HOME</button>
+                    <button onclick="goAbout()">ABOUT</button>
+                    <button onclick="goContact()">CONTACT</button>
+                    <button onclick="goExplore()">EXPLORE</button>
+                </div>
+                <div class="account">
+                    <button onclick="loginPage()"><p id="accountDetail">Log in</p></button>
+                    <div class="profile" id="showProfile">
+                        <img src="">
+                        <p>:D</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="landingPage" id="homePage">
+                
+                <div class="rightSide">
+                    <div class="title">
+                        <p class="titlePart">Travel and Tour</p>
+                        <p class="titlePart">City of Cabuyao</p>
+                        <p class="titlePart description">Enterprise City of the Philippines</p>
+                        
+                    </div>
+                    <button onclick="goExplore()">See More</button>
+                    <div class="rightBottom">
+                        <div class="contactLogo">
+                            <div>
+                                <img src="https://cdn-icons-png.flaticon.com/256/20/20673.png">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3670/3670299.png">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3670/3670016.png">
+                                <img src="https://cdn-icons-png.flaticon.com/512/80/80648.png">
+                            </div>
+                            <p style="text-align: left;">No copyright infringement intended. All images belongs to its rightful owners. This page was created for educational purposes only.</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="leftSide">
+                    <div class="columnImages">
+                        <img style="height: 50%;" src="https://scontent.xx.fbcdn.net/v/t1.15752-9/436690431_456190040216313_33528669822215673_n.png?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGCYDKQxrE7xIV9EkUAxHfQPVIWhqL3fj09UhaGovd-PdkBcz14lElF7_WmH91DvlxWaS7J2pPm82NfRmQDV4w1&_nc_ohc=jZ_5BHGOC3EQ7kNvgFXYW0z&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QEzXHzghuIl7bRgiPrES1iAczE43BDFrJ3zSgjgfDiOXw&oe=668AC534">
+                    </div>
+                    <div class="columnImages">
+                        <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/442014561_288713450897790_2341658706738303580_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEUwy5yUwE4LfJte0HRFePh6bHkjzzUjFPpseSPPNSMU_g-GOxkJNmgLYwzgFNRVDYfEorVhf8RYCcq8ZS0eMUW&_nc_ohc=O8ihNWOQx8UQ7kNvgHeOMd8&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QGQr_GmW5scHjh7TNFSlJGTpR8gNF531pCweOeD1gsvOQ&oe=668AA3B2">
+                        <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/440594337_7784924978196869_7423953649348558555_n.png?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHclWKgKukVhVL_h5-42V4QGKpmoD7_leYYqmagPv-V5l5L8OpG-Z-Y_Tw1s7WT7d0s59sy2CzD0Cm5TQWxUyrL&_nc_ohc=E302GJShPOMQ7kNvgGE-SLz&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QFIhbYJ2cV_dQzkBoaRQcMwsmMDB_i2dznnAUugx5rPqQ&oe=668AA003">
+                    </div>
+                </div>
+            </div>
+            <div class="aboutPage" id="aboutPage">
+                <div class="aboutInformations">
+                    <div style="display: flex; 
+                                background-color: rgba(150, 150, 255, 0); 
+                                flex-direction: column; 
+                                width: 50%;
+                                padding: 30px;
+                                font-size: 30px;">
+                        <div style="text-align: center;
+                                    font-size: 50px;">
+                              About Us
+                        </div>
+                        <div style="text-align: left;">
+                            <p>
+                                The purpose of this website is to share and highlight popular tourist destinations in the city of Cabuyao.
+                                The recommended places are just some of the beautiful spots in Cabuyao, but there are still many hidden gems in the city of Cabuyao.
+                            </p>
+                        </div>
+                    </div>
+                    <div style="display: flex;
+                                width: 50%;
+                                background-color: rgba(0, 128, 0, 0);
+                                justify-content: center;
+                                align-items: center;">
+                        <img src="https://z-p3-scontent.fmnl33-2.fna.fbcdn.net/v/t1.15752-9/441019900_415565444597459_7103001264770497491_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeF3Kcw3tApoqDjT5R-jGKiY1hRopC4jVKfWFGikLiNUp95sOT94Vcov5lZ7njfS6RHFlRz7BDNRx-TgZnGgHTLE&_nc_ohc=9xzwv4VTMN8Q7kNvgECwBDV&_nc_ht=z-p3-scontent.fmnl33-2.fna&oh=03_Q7cD1QFVncVU21y1SoAPpL4MRK_-ypoFaTZAtGvgKEmAN12UCg&oe=66668A66" alt="image"
+                            style="width: 100%; height: 50%; border-radius: 10px;">
+                        <img src="https://z-p3-scontent.fmnl33-1.fna.fbcdn.net/v/t1.15752-9/438267272_1376176893061635_5340089979404018096_n.png?_nc_cat=108&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeE6SVVDcuKBCb58cg9_eCAdLqHX07Tr-mouodfTtOv6al-jb3qEaKYtvYIp6N_sa_qpJobAMiR8Ulp4kKTtDAAc&_nc_ohc=-bPe1sbhSq8Q7kNvgEZtJyC&_nc_ht=z-p3-scontent.fmnl33-1.fna&oh=03_Q7cD1QE6rFk52lgtAVcKc2pmBgucZ5bGz8PXFpeCXIXBteZvBA&oe=66666A14" alt="image"
+                            style="position: absolute; width: 15%;">
+                    </div>
+                </div>
+            </div>
+            <div class="contactPage" id="contactPage">
+                <div style="display: flex;
+                            background-color: rgba(137, 43, 226, 0);
+                            width: 50%;
+                            height: 600px;
+                            flex-direction: column;">
+                    <table>
+                        <tr>
+                            <td style="width: 700px;">
+                                <p style="font-size: 4vh; margin: 0;">Social Media:</p>
+                                <div class="contactLogo" style="height: 8vh; padding: 0; margin: 0; justify-content: center; background-color: rgba(255, 0, 0, 0);">
+                                    <div>
+                                        <img src="https://cdn-icons-png.flaticon.com/256/20/20673.png">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/3670/3670299.png">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384015.png">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/3670/3670016.png">
+                                        <img src="https://cdn-icons-png.flaticon.com/512/80/80648.png">
+                                    </div>
+                                </div><br><br><br><br>
+                                <p style="font-size: 4vh; margin: 0; background-color: rgba(255, 0, 0, 0);">Contact:</p>
+                                <div>
+                                    <div class="other_contact" style="font-size: 1vh; display: flex; background-color: rgba(255, 0, 0, 0); flex-direction: column;">
+                                        <div class="logo_container">
+                                            <img src="https://cdn4.iconfinder.com/data/icons/social-media-logos-6/512/112-gmail_email_mail-64.png">
+                                            <p>rioverosjustine92@gmail.com</p>
+                                        </div>
+                                        <div class="logo_container">
+                                            <img src="https://cdn4.iconfinder.com/data/icons/social-media-logos-6/512/112-gmail_email_mail-64.png">
+                                            <p>sta.anajulianalouise44@gmail.com</p>
+                                        </div>
+                                        <div class="logo_container">
+                                            <img src="https://cdn1.iconfinder.com/data/icons/hex-ico/128/phone.png">
+                                            <p>09865321458</p>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </td>
+                            <td style="font-size: 25px;">
+                                <p>Created By:</p>
+                                <i><p>Rioveros, Justine Ken D.</p></i>
+                                <i><p>Sta. Ana, Juliana Louise M.</p></i><br>
+                                <p style="padding: 0; margin: 0;">ITP102</p>
+                                <p>2IT-A</p>
+                                <p>5/7/2024</p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="explorePage" id="explorePage">
+                <p style="position: absolute; background-color: rgba(255, 0, 0, 0); top: 170px; font-size: 5vh;">BOOK YOUR TOUR DESTINATION NOW!</p>
+                <div class="destinationBoxes">
+                    <div class="destinationBox" onclick="transactionPage()">
+                        <div class="destinationImage">
+                            <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/441169934_478900021133267_3963414502269687034_n.png?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGAgXna8ZJaQydmkc3Lj10ERyiisa09ZB1HKKKxrT1kHaN_ucyZh2HMG9D2xGP_F66RSBXMx6awYw5hby-vSf7C&_nc_ohc=B5I0Gc40jU8Q7kNvgH5NOdC&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QG2SI3rGC_V4HmWpL5Yd3uL9K7UMGD74Sy7VlWhoP6STQ&oe=668ABF1B">
+                        </div>
+                        <div class="destinationImage boxOverlay"><div class="blurBG"><p>Marcos Twin <span><br></span> Mansion</p></div></div>
+                    </div>
+                    <div class="destinationBox" onclick="transactionPage()">
+                        <div class="destinationImage">
+                            <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/438203813_416603644469813_5116225102254792393_n.png?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeFJ5PZPmRlPRj9A2qbFYf_wjYSDLZloq6qNhIMtmWirqv421VxgF40BXUE2VUW5v02KlZ-J0HOo-xN43zNaL6fB&_nc_ohc=f4v74jhCG-4Q7kNvgF_eci6&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QEyUCsfQoyiqejyvplGASE19W4MPPQaEUujTZ2WAo5erw&oe=668AA46D">
+                        </div>
+                        <div class="destinationImage boxOverlay"><div class="blurBG"><p>Cabuyao Bayan</p></div></div>
+                    </div>
+                    <div class="destinationBox" onclick="transactionPage()">
+                        <div class="destinationImage">
+                            <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/436690431_456190040216313_33528669822215673_n.png?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGCYDKQxrE7xIV9EkUAxHfQPVIWhqL3fj09UhaGovd-PdkBcz14lElF7_WmH91DvlxWaS7J2pPm82NfRmQDV4w1&_nc_ohc=jZ_5BHGOC3EQ7kNvgFXYW0z&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QEzXHzghuIl7bRgiPrES1iAczE43BDFrJ3zSgjgfDiOXw&oe=668AC534">
+                        </div>
+                        <div class="destinationImage boxOverlay"><div class="blurBG"><p>Queen Aurora <span><br></span>Garden Resort</p></div></div>
+                    </div>
+                    <div class="destinationBox" onclick="transactionPage()">
+                        <div class="destinationImage">
+                            <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/440594337_7784924978196869_7423953649348558555_n.png?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeHclWKgKukVhVL_h5-42V4QGKpmoD7_leYYqmagPv-V5l5L8OpG-Z-Y_Tw1s7WT7d0s59sy2CzD0Cm5TQWxUyrL&_nc_ohc=E302GJShPOMQ7kNvgGE-SLz&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QFIhbYJ2cV_dQzkBoaRQcMwsmMDB_i2dznnAUugx5rPqQ&oe=668AA003">
+                        </div>
+                        <div class="destinationImage boxOverlay"><div class="blurBG"><p>Cabuyao City Hall</p></div></div>
+                    </div>
+                    <div class="destinationBox" onclick="transactionPage()">
+                        <div class="destinationImage">
+                            <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/442014561_288713450897790_2341658706738303580_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeEUwy5yUwE4LfJte0HRFePh6bHkjzzUjFPpseSPPNSMU_g-GOxkJNmgLYwzgFNRVDYfEorVhf8RYCcq8ZS0eMUW&_nc_ohc=O8ihNWOQx8UQ7kNvgHeOMd8&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QGQr_GmW5scHjh7TNFSlJGTpR8gNF531pCweOeD1gsvOQ&oe=668AA3B2">
+                        </div>
+                        <div class="destinationImage boxOverlay"><div class="blurBG"><p>Candy Land</p></div></div>
+                    </div>
+                    <div class="destinationBox" onclick="transactionPage()">
+                        <div class="destinationImage">
+                            <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/441032255_1139374683776855_5687282386847045443_n.png?_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeE9tp8YNLcFo6wStY0w9JRHH4n0fBbTCVkfifR8FtMJWZ3xmeV-shdwWUJ0EaUtymhjv1L7FGOxN0MiF2xPXbcG&_nc_ohc=B6pvmiez7o8Q7kNvgEiSCAD&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_Q7cD1QGSki3Xn77GTmvl-G1TWOwzzBvsSl2JJsVczyQvao5_Kg&oe=668AB972">
+                        </div>
+                        <div class="destinationImage boxOverlay"><div class="blurBG"><p>St. Polycarp Parish</p></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="transactionPage" id="transactionPage">
+                <div class="fieldPanel">
+                    <form>
+                        <fieldset>
+                            <legend><b>Personal Information</b></legend>
+                            <p style="padding: 0; margin: 0;">Name:</p>
+                            <input type="text" id="" placeholder="First Name" required style="width: 40%; height: 30px;">
+                            <input type="text" id="" placeholder="Last Name" required style="width: 40%; height: 30px;"><br><br>
+                            <p style="padding: 0; margin: 0;">Address:</p>
+                            <input type="text" id="" placeholder="Enter your address" style="width: 82%; height: 30px;"><br><br>
+                            <p style="padding: 0; margin: 0;">Contact:</p>
+                            <input type="text" id="" placeholder="Contact Number" required style="height: 30px;">
+                            <input type="text" id="" placeholder="Email Address" required style="width: 50%; height: 30px;"><br>
+                        </fieldset><br>
+                        <fieldset>
+                            <legend><b>Tour Details</b></legend>
+                            <input type="text" id="" placeholder="Purpose of Tour" style="width: 82%; height: 30px;"><br>
+                            <input type="text" id="" placeholder="Number of Guest" style="width: 29%; height: 30px;">
+                            <input type="date" id="" required style="height: 30px;">
+                            <input type="text" id="" placeholder="Preferred Time" required style="height: 30px;"><br>
+                            <button onclick="goHome()" style="width: 100px; height: 30px; cursor: pointer; margin: 10px;">Cancel</button>
+                            <button onclick="submitTransact()" style="width: 100px; height: 30px; cursor: pointer; margin: 10px;">Submit</button>
+                            <input type="reset" value="Clear Form" style="width: 100px; height: 30px; cursor: pointer; margin: 10px;"/>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <div class="registerPage" id="registrationPage">
+                <div class="registerPanel">
+                    <p style="margin: 0; text-align: center; width: 350px; font-size: 25px;">REGISTER</p><br><br>
+                    <p style="margin: 0; text-align: left; width: 350px; font-size: 25px;">Username:</p>
+                    <input type="text" id="regName" placeholder="Enter Username"><br>
+                    <p style="margin: 0; width: 350px; font-size: 25px;">Passwowrd:</p>
+                    <input type="password" id="regPass1" placeholder="Enter Password">
+                    <input type="password" id="regPass2" placeholder="Re-enter password">
+                    <div>
+                        <button onclick="loginPage()">BACK</button>
+                        <button onclick="regSubmit()">SUBMIT</button>
+                    </div>
+                </div>
+            </div>
+            <div class="loginPage" id="loginPage">
+                <div class="loginPanel">
+                    <p style="margin: 0; text-align: center; width: 350px; font-size: 25px;">LOGIN</p><br><br>
+                    <p style="margin: 0; text-align: left; width: 350px; font-size: 25px;">Username:</p>
+                    <input type="text" id="logName" placeholder="Enter Username"><br>
+                    <p style="margin: 0; width: 350px; font-size: 25px;">Passwowrd:</p>
+                    <input type="password" id="logPass" placeholder="Enter Password">
+                    <div>
+                        <button onclick="goHome()">BACK</button>
+                        <button onclick="logSubmit()">LOGIN</button>
+                        <button onclick="registrationPage()">REGISTER</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            function goHome(){
+                document.getElementById("homePage").style.zIndex="51";
+                document.getElementById("homePageBG").style.zIndex="51";
+                document.getElementById("aboutPage").style.zIndex="30";
+                document.getElementById("contactPage").style.zIndex="30";
+                document.getElementById("explorePage").style.zIndex="30";
+                document.getElementById("transactionPage").style.zIndex="30";
+                document.getElementById("loginPage").style.zIndex="30";
+                document.getElementById("registrationPage").style.zIndex="30";
+
+                document.getElementById("homePageBG").style.display="flex";
+            }
+            function goAbout(){
+                document.getElementById("homePage").style.zIndex="30";
+                document.getElementById("aboutPage").style.zIndex="51";
+                document.getElementById("contactPage").style.zIndex="30";
+                document.getElementById("explorePage").style.zIndex="30";
+                document.getElementById("transactionPage").style.zIndex="30";
+                document.getElementById("loginPage").style.zIndex="30";
+                document.getElementById("registrationPage").style.zIndex="30";
+
+                document.getElementById("aboutPage").style.display="flex";
+            }
+            function goContact(){
+                document.getElementById("homePage").style.zIndex="30";
+                document.getElementById("aboutPage").style.zIndex="30";
+                document.getElementById("contactPage").style.zIndex="51";
+                document.getElementById("explorePage").style.zIndex="30";
+                document.getElementById("transactionPage").style.zIndex="30";
+                document.getElementById("loginPage").style.zIndex="30";
+                document.getElementById("registrationPage").style.zIndex="30";
+
+                document.getElementById("contactPage").style.display="flex";
+            }
+            function goExplore(){
+                document.getElementById("homePage").style.zIndex="30";
+                document.getElementById("aboutPage").style.zIndex="30";
+                document.getElementById("contactPage").style.zIndex="30";
+                document.getElementById("explorePage").style.zIndex="51";
+                document.getElementById("transactionPage").style.zIndex="30";
+                document.getElementById("loginPage").style.zIndex="30";
+                document.getElementById("registrationPage").style.zIndex="30";
+
+                document.getElementById("explorePage").style.display="flex";
+            }
+            let canTransact=false;
+            function transactionPage(){
+                if(canTransact){
+                    document.getElementById("homePage").style.zIndex="30";
+                    document.getElementById("aboutPage").style.zIndex="30";
+                    document.getElementById("contactPage").style.zIndex="30";
+                    document.getElementById("explorePage").style.zIndex="30";
+                    document.getElementById("transactionPage").style.zIndex="51";
+                    document.getElementById("loginPage").style.zIndex="30";
+                    document.getElementById("registrationPage").style.zIndex="30";
+
+                    document.getElementById("transactionPage").style.display="flex";
+                }else{
+                    alert("You must log your account first.")
+                }
+            }
+            function loginPage(){
+                document.getElementById("homePage").style.zIndex="30";
+                document.getElementById("aboutPage").style.zIndex="30";
+                document.getElementById("contactPage").style.zIndex="30";
+                document.getElementById("explorePage").style.zIndex="30";
+                document.getElementById("transactionPage").style.zIndex="30";
+                document.getElementById("loginPage").style.zIndex="51";
+                document.getElementById("registrationPage").style.zIndex="30";
+
+                document.getElementById("loginPage").style.display="flex";
+            }
+            function registrationPage(){
+                document.getElementById("homePage").style.zIndex="30";
+                document.getElementById("aboutPage").style.zIndex="30";
+                document.getElementById("contactPage").style.zIndex="30";
+                document.getElementById("explorePage").style.zIndex="30";
+                document.getElementById("transactionPage").style.zIndex="30";
+                document.getElementById("loginPage").style.zIndex="30";
+                document.getElementById("registrationPage").style.zIndex="51";
+
+                document.getElementById("registrationPage").style.display="flex";
+            }
+
+            let userLoggedIn=false;
+            let accountsName = new Array();
+            let accountsPass = new Array();
+
+            function regSubmit(){
+                let regName=document.getElementById("regName").value;
+                let regPass1=document.getElementById("regPass1").value;
+                let regPass2=document.getElementById("regPass2").value;
+
+
+                if(regPass1==regPass2){
+                    if(regPass2.length>=4){
+                        alert("successfully registered");
+                        accountsName.push(regName);
+                        accountsPass.push(regPass2);
+                    }else{
+                        alert("password must be greater than 4 characters");
+                    }
+                }else{
+                    alert("failed to register")
+                }
+            }
+            function logSubmit(){
+                let logName=document.getElementById("logName").value;
+                let logPass=document.getElementById("logPass").value;
+                let nameFound=false;
+                let passFound=false;
+
+                for(let count=0; count<accountsName.length; count++){
+                    if(logName==accountsName[count]){
+                        nameFound=true;
+                    }
+                }
+                for(let count=0; count<accountsPass.length; count++){
+                    if(logPass==accountsPass[count]){
+                        passFound=true;
+                    }
+                }
+
+                if(nameFound && passFound){
+                    alert("successfully logged in");
+                    document.getElementById("showProfile").style.display="flex";
+                    document.getElementById("accountDetail").innerHTML="Account";
+                    canTransact=true;
+                    goHome();
+                }else{
+                    alert("failed to login");
+                }
+            }
+            function submitTransact(){
+                alert("Successfully submited! response will be delivered eventually");
+            }
+        </script>
+    </body>
+</html>
+
+
+<!--
+
+Rioveros, Justine Ken D.
+Sta. Ana, Juliana Louise M.
+2IT-A
+
+
+REFERENCES:
+
+https://www.google.com/maps/@14.203715,121.0415534,3a,75y,97.84h,103.65t/data=!3m6!1e1!3m4!1slI_jXNCmbTmtnyiV7QuAbA!2e0!7i16384!8i8192?entry=ttu
+https://www.google.com/maps/@14.277383,121.1234002,3a,75y,123.87h,94.45t/data=!3m6!1e1!3m4!1smZ4uI4BDHv0f5xKbVRHneA!2e0!7i16384!8i8192?entry=ttu
+https://www.google.com/maps/place/Queen+Aurora+Garden+Resort/@14.2733362,121.1530278,3a,75y,90t/data=!3m8!1e2!3m6!1sAF1QipO1UkCxSjRYwVMnbkWBdaGgRffg8qtPJuOfiaxP!2e10!3e12!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipO1UkCxSjRYwVMnbkWBdaGgRffg8qtPJuOfiaxP%3Dw203-h152-k-no!7i4618!8i3464!4m10!3m9!1s0x3397d8bf3595fc9b:0x857203838562402b!5m2!4m1!1i2!8m2!3d14.2733362!4d121.1530278!10e5!16s%2Fg%2F11bx5pgy71?entry=ttu
+https://www.skyscrapercity.com/attachments/fb_img_1691915502651-jpg.5667267/
+https://web.facebook.com/100063792666371/posts/122225476142049/
+https://img.freepik.com/free-vector/hand-draw-blue-brush-stroke-watercolor-design_1035-21823.jpg?w=826&t=st=1715392199~exp=1715392799~hmac=58a77e0a7236357aee3091825050f01a5cfbd8c4ff16f0d43a02daf778d48221
+https://img.pikbest.com/ai/illus_our/20230413/3e56ba46ec615e68bc71de75de895616.jpg!bwr800
+https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fimage-vector%2Fmail-icons-email-symbol-inbox-icon-1509380165&psig=AOvVaw1r1jCIz6qO_yF_Q08nHac0&ust=1715486991440000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCOiYsJrdhIYDFQAAAAAdAAAAABAc
+https://scontent.fmnl33-5.fna.fbcdn.net/v/t39.30808-6/405798446_850453103753490_6481604281449948865_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=KyaGnV2OOV8Q7kNvgGf7HLx&_nc_zt=23&_nc_ht=scontent.fmnl33-5.fna&oh=00_AYAuogT6GGC4By_WIyC1O-opSxTWQo_D7_xeewlFbxeWMA&oe=6644E524
+https://www.google.com/maps/@14.2719272,121.1238536,3a,82.7y,129.88h,99.62t/data=!3m6!1e1!3m4!1saWGu-KXtCyA0wwKNOKFDQA!2e0!7i16384!8i8192?entry=ttu
+
+
+
+
+-->
